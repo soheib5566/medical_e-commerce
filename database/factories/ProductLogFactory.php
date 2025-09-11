@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,12 @@ class ProductLogFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'product_id' => Product::factory(),
+            'action' => $this->faker->randomElement(['created', 'updated', 'deleted']),
+            'changed_by' => User::factory(),
+            'changes' => json_encode([
+                'price' => ['old' => 100, 'new' => 120]
+            ]),
         ];
     }
 }

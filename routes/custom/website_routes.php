@@ -6,8 +6,10 @@ use App\Http\Controllers\website\ProductController;
 use Illuminate\Support\Facades\Route;
 
 
-
+// Home page
 Route::get(('/'), action: [ProductController::class, 'index'])->name('website.products.index');
+Route::post('/products/{product}/cart', [ProductController::class, 'store'])
+    ->name('website.products.cart.store');
 
 // cart routes
 Route::get('/cart', [CartController::class, 'index'])->name('website.cart.index');

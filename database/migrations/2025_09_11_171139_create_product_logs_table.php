@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->string('action'); // created, updated, deleted
-            $table->foreignId('changed_by')->constrained('users')->onDelete('cascade');
+            $table->foreignId('changed_by')->nullable()->constrained('users')->nullOnDelete();
             $table->json('changes')->nullable();
             $table->timestamps();
         });

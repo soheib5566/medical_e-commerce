@@ -8,45 +8,47 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductObserver
 {
-    /**
-     * Handle the Product "created" event.
-     */
+    protected function getChangedBy(): ?int
+    {
+        return Auth::check() ? Auth::id() : null;
+    }
+
     public function created(Product $product): void
     {
         ProductLog::create([
             'product_id' => $product->id,
             'action'     => 'created',
-            'changed_by' => Auth::id(),
-            'changes'    => json_encode($product->getAttributes()), // initial values
+            'changed_by' => $this->getChangedBy(),
+            'changes'    => json_encode([
+                'new' => $product->getAttributes(),
+                'triggered_by' => Auth::check() ? 'user' : 'guest',
+            ]),
         ]);
     }
 
-    /**
-     * Handle the Product "updated" event.
-     */
     public function updated(Product $product): void
     {
         ProductLog::create([
             'product_id' => $product->id,
             'action'     => 'updated',
-            'changed_by' => Auth::id(),
+            'changed_by' => $this->getChangedBy(),
             'changes'    => json_encode([
                 'old' => $product->getOriginal(),
                 'new' => $product->getChanges(),
+                'triggered_by' => Auth::check() ? 'user' : 'guest',
             ]),
         ]);
     }
 
-    /**
-     * Handle the Product "deleted" event.
-     */
     public function deleted(Product $product): void
     {
         ProductLog::create([
             'product_id' => $product->id,
             'action'     => 'deleted',
-            'changed_by' => Auth::id(),
-            'changes'    => null,
+            'changed_by' => $this->getChangedBy(),
+            'changes'    => json_encode([
+                'triggered_by' => Auth::check() ? 'user' : 'guest',
+            ]),
         ]);
     }
 }

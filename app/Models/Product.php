@@ -40,4 +40,20 @@ class Product extends Model
 
         return $query;
     }
+
+    public function scopeMinPrice($query, float $price)
+    {
+        if ($price !== null) {
+            return $query->where('price', '>=', $price);
+        }
+        return $query;
+    }
+
+    public function scopeMaxPrice($query, float $price)
+    {
+        if ($price !== null) {
+            return $query->where('price', '<=', $price);
+        }
+        return $query;
+    }
 }

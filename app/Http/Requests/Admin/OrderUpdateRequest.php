@@ -27,7 +27,7 @@ class OrderUpdateRequest extends FormRequest
         ];
     }
 
-    public function updateStatusOrder(Order $order)
+    public function updateStatusOrder(Order $order): Order
     {
         $order->update([
             'status' => $this->status

@@ -21,7 +21,7 @@ class ProductObserver
             'changed_by' => $this->getChangedBy(),
             'changes'    => json_encode([
                 'new' => $product->getAttributes(),
-                'triggered_by' => Auth::check() ? 'user' : 'guest',
+                'triggered_by' => Auth::check() ? 'admin' : 'guest',
             ]),
         ]);
     }
@@ -35,7 +35,7 @@ class ProductObserver
             'changes'    => json_encode([
                 'old' => $product->getOriginal(),
                 'new' => $product->getChanges(),
-                'triggered_by' => Auth::check() ? 'user' : 'guest',
+                'triggered_by' => Auth::check() ? 'admin' : 'guest',
             ]),
         ]);
     }
@@ -47,7 +47,7 @@ class ProductObserver
             'action'     => 'deleted',
             'changed_by' => $this->getChangedBy(),
             'changes'    => json_encode([
-                'triggered_by' => Auth::check() ? 'user' : 'guest',
+                'triggered_by' => Auth::check() ? 'admin' : 'guest',
             ]),
         ]);
     }

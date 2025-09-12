@@ -63,7 +63,8 @@ class OrderController extends Controller
             }
 
             // Deduct stock
-            $product->decrement('stock', $item['quantity']);
+            $product->stock = $product->stock - $item['quantity'];
+            $product->save();
 
             // Save order items
             $order->items()->create([

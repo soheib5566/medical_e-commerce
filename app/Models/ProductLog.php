@@ -10,7 +10,7 @@ class ProductLog extends Model
     /** @use HasFactory<\Database\Factories\ProductLogFactory> */
     use HasFactory;
 
-    protected $fillable = ['product_id', 'action', 'changed_by', 'changes'];
+    protected $fillable = ['product_id', 'product_name', 'action', 'changed_by', 'changes'];
 
     protected $casts = [
         'changes' => 'array',
@@ -19,6 +19,11 @@ class ProductLog extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'changed_by');
     }
 
     public function admin()

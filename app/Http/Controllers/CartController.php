@@ -34,7 +34,7 @@ class CartController extends Controller
 
         if (isset($cart[$product->id])) {
             $newQuantity = $request->quantity;
-            
+
             // Validate quantity
             if ($newQuantity <= 0) {
                 unset($cart[$product->id]);
@@ -46,9 +46,9 @@ class CartController extends Controller
                     'message' => 'Quantity exceeds available stock'
                 ]);
             }
-            
+
             session()->put('cart', $cart);
-            
+
             return response()->json([
                 'success' => true,
                 'message' => 'Cart updated successfully'
@@ -68,7 +68,7 @@ class CartController extends Controller
         if (isset($cart[$product->id])) {
             unset($cart[$product->id]);
             session()->put('cart', $cart);
-            
+
             return response()->json([
                 'success' => true,
                 'message' => 'Product removed from cart'

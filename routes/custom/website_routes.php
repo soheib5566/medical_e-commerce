@@ -13,6 +13,7 @@ Route::post('/products/{product}/cart', [ProductController::class, 'store'])
 
 // cart routes
 Route::get('/cart', [CartController::class, 'index'])->name('website.cart.index');
+Route::get('/cart/count', [CartController::class, 'count'])->name('website.cart.count');
 Route::put('/cart/{product}', [CartController::class, 'update'])->name('website.cart.update');
 Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('website.cart.destroy');
 

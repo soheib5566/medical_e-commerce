@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('product_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->foreignId('product_id')->nullable()->constrained()->onDelete('cascade');
+            $table->string('product_name'); // Store product name for deleted products
             $table->string('action'); // created, updated, deleted
             $table->foreignId('changed_by')->nullable()->constrained('users')->nullOnDelete();
             $table->json('changes')->nullable();

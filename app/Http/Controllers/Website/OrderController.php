@@ -49,7 +49,7 @@ class OrderController extends Controller
             'phone_number'     => $validated['phone_number'],
             'delivery_address' => $validated['delivery_address'],
             'total_price'      => $total,
-            'status'           => 'pending',
+            'status'           => 'processing',
             'user_id'          => auth()->check() ? auth()->id() : null,
         ]);
 

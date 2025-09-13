@@ -9,11 +9,12 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index(ProductFilter $filters)
+    public function index(Request $request, ProductFilter $filters)
     {
         $products = Product::with('category')
             ->filters($filters)
-            ->paginate(12);
+            ->paginate(12)
+            ->appends($request->query());
 
         return view('website.products.index', compact('products'));
     }

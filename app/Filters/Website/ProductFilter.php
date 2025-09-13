@@ -3,18 +3,60 @@
 namespace App\Filters\Website;
 
 use App\Filters\QueryFilter;
-use App\Traits\Searchable;
 
 class ProductFilter extends QueryFilter
 {
-    use Searchable;
-    public function minprice($value)
+    public function search($value)
     {
-        return $this->builder->minPrice($value);
+        if (empty($value)) {
+            return $this->builder;
+        }
+        
+        return $this->builder->where(function($query) use ($value) {
+            $query->where('name', 'like', "%{$value}%")
+                  ->orWhere('description', 'like', "%{$value}%");
+        });
     }
 
-    public function maxprice($value)
+    public function category($value = null)
     {
-        return $this->builder->maxPrice($value);
+        if (empty($value)) {
+            return $this->builder;
+        }
+        
+        return $this->builder->where('category_id', $value);
+    }
+
+    public function min_price($value = 0)
+    {
+        if (empty($value)) {
+            return $this->builder;
+        }
+        
+        return $this->builder->where('price', '>=', $value);
+    }
+
+    public function max_price($value = 0)
+    {
+        if (empty($value)) {
+            return $this->builder;
+        }
+        
+        return $this->builder->where('price', '<=', $value);
+    }
+
+    public function sort($value)
+    {
+        switch ($value) {
+            case 'price_asc':
+                return $this->builder->orderBy('price', 'asc');
+            case 'price_desc':
+                return $this->builder->orderBy('price', 'desc');
+            case 'newest':
+                return $this->builder->orderBy('created_at', 'desc');
+            case 'name':
+            default:
+                return $this->builder->orderBy('name', 'asc');
+        }
     }
 }

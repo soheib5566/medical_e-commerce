@@ -16,6 +16,17 @@ class Product extends Model
 
     protected $fillable = ['name', 'description', 'price', 'stock', 'image', 'category_id'];
 
+    /**
+     * Get the product image URL
+     */
+    public function getImageUrlAttribute()
+    {
+        if ($this->image) {
+            return asset('storage/' . $this->image);
+        }
+        return asset('images/default-product.svg');
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

@@ -72,21 +72,21 @@
                                     <!-- Quantity Controls -->
                                     <div class="flex items-center space-x-3">
                                         <button 
-                                            onclick="updateQuantity({{ $productId }}, {{ $item['quantity'] - 1 }})"
+                                            onclick="updateQuantity({{ $productId }}, 'decrease')"
                                             class="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
-                                            {{ $item['quantity'] <= 1 ? 'disabled' : '' }}
                                         >
                                             <svg class="h-4 w-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
                                             </svg>
                                         </button>
                                         
-                                        <span class="text-lg font-medium text-gray-900 w-8 text-center">{{ $item['quantity'] }}</span>
+                                        <span id="qty-{{ $productId }}" class="text-lg font-medium text-gray-900 w-8 text-center">
+                                            {{ $item['quantity'] }}
+                                        </span>
                                         
                                         <button 
-                                            onclick="updateQuantity({{ $productId }}, {{ $item['quantity'] + 1 }})"
+                                            onclick="updateQuantity({{ $productId }}, 'increase')"
                                             class="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
-                                            {{ $item['quantity'] >= $item['stock'] ? 'disabled' : '' }}
                                         >
                                             <svg class="h-4 w-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
@@ -122,7 +122,7 @@
                             <!-- Items List -->
                             <div class="space-y-3 mb-6">
                                 @foreach($cart as $productId => $item)
-                                <div class="flex justify-between items-center">
+                                <div class="flex justify-between items-center" id="summary-item-{{ $productId }}">
                                     <div class="flex items-center space-x-3">
                                         <img 
                                             src="{{ $item['image'] ? asset('storage/' . $item['image']) : asset('images/default-product.svg') }}" 
@@ -131,10 +131,12 @@
                                         >
                                         <div>
                                             <p class="text-sm font-medium text-gray-900">{{ $item['name'] }}</p>
-                                            <p class="text-xs text-gray-600">Qty: {{ $item['quantity'] }}</p>
+                                            <p id="summary-qty-{{ $productId }}" class="text-xs text-gray-600">Qty: {{ $item['quantity'] }}</p>
                                         </div>
                                     </div>
-                                    <span class="text-sm font-medium text-gray-900">${{ number_format($item['price'] * $item['quantity'], 2) }}</span>
+                                    <span id="summary-price-{{ $productId }}" class="text-sm font-medium text-gray-900">
+                                        ${{ number_format($item['price'] * $item['quantity'], 2) }}
+                                    </span>
                                 </div>
                                 @endforeach
                             </div>
@@ -172,85 +174,3 @@
 <!-- Toast Container -->
 <div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2"></div>
 @endsection
-
-@push('scripts')
-<script>
-    function updateQuantity(productId, newQuantity) {
-        if (newQuantity < 1) {
-            removeFromCart(productId);
-            return;
-        }
-
-        fetch(`/cart/${productId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            },
-            body: JSON.stringify({ quantity: newQuantity })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                location.reload(); // Reload to update the page
-            } else {
-                showToast(data.message || 'Failed to update quantity', 'error');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            showToast('An error occurred. Please try again.', 'error');
-        });
-    }
-
-    function removeFromCart(productId) {
-        if (!confirm('Are you sure you want to remove this item from your cart?')) {
-            return;
-        }
-
-        fetch(`/cart/${productId}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                showToast('Item removed from cart', 'success');
-                location.reload(); // Reload to update the page
-            } else {
-                showToast(data.message || 'Failed to remove item', 'error');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            showToast('An error occurred. Please try again.', 'error');
-        });
-    }
-
-    function showToast(message, type = 'success') {
-        const toast = document.createElement('div');
-        toast.className = `fixed top-4 right-4 z-50 px-6 py-3 rounded-lg shadow-lg transition-all duration-300 transform translate-x-full ${
-            type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
-        }`;
-        toast.textContent = message;
-        
-        document.body.appendChild(toast);
-        
-        // Animate in
-        setTimeout(() => {
-            toast.classList.remove('translate-x-full');
-        }, 100);
-        
-        // Auto remove
-        setTimeout(() => {
-            toast.classList.add('translate-x-full');
-            setTimeout(() => {
-                document.body.removeChild(toast);
-            }, 300);
-        }, 3000);
-    }
-</script>
-@endpush

@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         
-                        <form action="{{ route('website.checkout.store') }}" method="POST" class="p-6">
+                        <form id="checkout-form" action="{{ route('website.checkout.store') }}" method="POST" class="p-6">
                             @csrf
                             
                             <div class="space-y-6">
@@ -111,6 +111,16 @@
                                     @enderror
                                 </div>
                             </div>
+
+                            <!-- Submit -->
+                            <div class="mt-6">
+                                <button 
+                                    type="submit" 
+                                    class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                                >
+                                    Place Order
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -157,71 +167,11 @@
                                     </span>
                                 </div>
                             </div>
-                            
-                            <!-- Place Order Button -->
-                            <button 
-                                type="submit" 
-                                form="checkout-form"
-                                class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
-                            >
-                                Place Order
-                            </button>
-                            
-                            <!-- Terms -->
-                            <p class="text-xs text-gray-500 text-center mt-4">
-                                By placing this order, you agree to our terms and conditions
-                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Hidden form for order placement -->
-            <form id="checkout-form" action="{{ route('website.checkout.store') }}" method="POST" class="hidden">
-                @csrf
-                <input type="hidden" name="full_name" id="form_full_name">
-                <input type="hidden" name="phone_number" id="form_phone_number">
-                <input type="hidden" name="delivery_address" id="form_delivery_address">
-            </form>
         @endif
     </div>
 </div>
 @endsection
-
-@push('scripts')
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.querySelector('form');
-        const submitButton = document.querySelector('button[type="submit"]');
-        
-        if (form && submitButton) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form data
-                const fullName = document.getElementById('full_name').value;
-                const phoneNumber = document.getElementById('phone_number').value;
-                const deliveryAddress = document.getElementById('delivery_address').value;
-                
-                // Validate required fields
-                if (!fullName || !phoneNumber || !deliveryAddress) {
-                    alert('Please fill in all required fields.');
-                    return;
-                }
-                
-                // Set hidden form values
-                document.getElementById('form_full_name').value = fullName;
-                document.getElementById('form_phone_number').value = phoneNumber;
-                document.getElementById('form_delivery_address').value = deliveryAddress;
-                
-                // Show loading state
-                submitButton.innerHTML = '<svg class="animate-spin h-5 w-5 mx-auto" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Placing Order...';
-                submitButton.disabled = true;
-                
-                // Submit the hidden form
-                document.getElementById('checkout-form').submit();
-            });
-        }
-    });
-</script>
-@endpush

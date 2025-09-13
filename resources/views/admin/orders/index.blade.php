@@ -72,11 +72,6 @@
 
                         <!-- Action Buttons -->
                         <div class="flex gap-3">
-                            <button onclick="viewOrderDetails('{{ $order->id }}')" 
-                                    class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                                <i data-lucide="eye" class="h-4 w-4"></i>
-                                View Details
-                            </button>
                             <form method="POST" action="{{ route('admin.orders.update', $order) }}" class="inline">
                                 @csrf
                                 @method('PUT')

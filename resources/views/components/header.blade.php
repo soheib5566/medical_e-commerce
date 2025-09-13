@@ -35,17 +35,25 @@
             @endif
 
             <!-- Cart -->
-            <div class="flex items-center">
-                <a href="{{ route('website.cart.index') }}" class="relative p-2 text-gray-600 hover:text-blue-600 transition-colors">
-                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6.5-5v6a1 1 0 01-1 1H9a1 1 0 01-1-1v-6m8 0V9a1 1 0 00-1-1H9a1 1 0 00-1-1V7a1 1 0 011-1h6a1 1 0 011 1v1"></path>
-                    </svg>
-                    @php $cartCount = session()->get('cart') ? array_sum(array_column(session('cart'), 'quantity')) : 0 @endphp
-                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full text-xs px-1.5 py-0.5 min-w-[20px] text-center {{ $cartCount > 0 ? '' : 'hidden' }}">
-                        {{ $cartCount }}
-                    </span>
-                </a>
-            </div>
+<div class="flex items-center">
+    <a href="{{ route('website.cart.index') }}" 
+       class="relative p-2 text-gray-600 hover:text-blue-600 transition-colors">
+        <!-- Icon -->
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2.5 5M7 13l2.5 5m6.5-5v6a1 1 0 01-1 1H9a1 1 0 01-1-1v-6m8 0V9a1 1 0 00-1-1H9a1 1 0 00-1-1V7a1 1 0 011-1h6a1 1 0 011 1v1" />
+        </svg>
+
+        <!-- Dynamic cart badge -->
+        @php
+            $cartCount = session('cart') ? array_sum(array_column(session('cart'), 'quantity')) : 0;
+        @endphp
+        <span id="cart-badge"
+              class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full text-xs px-1.5 py-0.5 min-w-[20px] text-center {{ $cartCount > 0 ? '' : 'hidden' }}">
+            {{ $cartCount }}
+        </span>
+    </a>
+</div>
         </div>
     </div>
 </header>

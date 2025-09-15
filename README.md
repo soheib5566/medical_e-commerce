@@ -45,7 +45,7 @@ DB_PASSWORD=your_password
 ```
 4. **Generate app key**
 ```bash
-Generate app key
+php artisan key:generate
 ```
 5. **Run migrations and seeders**
 ```bash

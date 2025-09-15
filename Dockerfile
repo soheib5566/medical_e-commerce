@@ -122,9 +122,6 @@ RUN if [ ! -f .env ]; then \
 RUN chown -R www-data:www-data storage bootstrap/cache database \
     && chmod -R 775 storage bootstrap/cache database
 
-# Generate application key if not set
-RUN php artisan key:generate --force
-
 # Run Laravel optimization commands
 RUN php artisan config:cache \
     && php artisan route:cache \

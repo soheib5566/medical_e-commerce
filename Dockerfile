@@ -122,11 +122,6 @@ RUN if [ ! -f .env ]; then \
 RUN chown -R www-data:www-data storage bootstrap/cache database \
     && chmod -R 775 storage bootstrap/cache database
 
-# Run Laravel optimization commands
-RUN php artisan config:cache \
-    && php artisan route:cache \
-    && php artisan view:cache
-
 # Expose port
 EXPOSE 8000
 
@@ -135,7 +130,10 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:8000 || exit 1
 
 # Run all necessary Laravel commands before starting the server
-CMD php artisan migrate --force && \
+CMD php artisan config:cache && \
+    php artisan route:cache && \
+    php artisan view:cache && \
+    php artisan migrate --force && \
     php artisan db:seed --force && \
     php artisan storage:link --force && \
     php artisan optimize && \

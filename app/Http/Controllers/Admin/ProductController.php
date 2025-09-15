@@ -36,13 +36,6 @@ class ProductController extends Controller
             ->with('success', "Product '{$product->name}' created successfully.");
     }
 
-    public function show(Product $product)
-    {
-        $product->load('category');
-
-        return view('admin.products.show', compact('product'));
-    }
-
     public function edit(Product $product)
     {
         $categories = Category::all();

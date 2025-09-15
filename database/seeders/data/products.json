@@ -22,7 +22,7 @@
       },
       {
         "name": "Kimtech™ Disinfecting Wipes",
-        "image": "products/wipes/R.jpg",
+        "image": "products/wipes/kim.jpg",
         "price": 5.99,
         "description": "Pre-moistened disinfecting wipes for surfaces, removes 99.9% of germs."
       },
@@ -81,7 +81,7 @@
       },
       {
         "name": "Crest Whitening Toothpaste",
-        "image": "products/dental_care/OIP (8)",
+        "image": "products/dental_care/crest.jpg",
         "price": 5.49,
         "description": "Whitening toothpaste that removes surface stains and protects against cavities."
       },
@@ -105,7 +105,7 @@
       },
       {
         "name": "Electric Toothbrush (Basic Model)",
-        "image": "products/dental_care/R (1).jpg",
+        "image": "products/dental_care/Elctric.jpg",
         "price": 29.99,
         "description": "Rechargeable electric toothbrush with soft bristles for daily dental care."
       },

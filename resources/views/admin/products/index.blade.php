@@ -120,11 +120,6 @@
                         
                         <!-- Actions -->
                         <div class="flex items-center gap-2">
-                            <a href="{{ route('admin.products.show', $product) }}" 
-                               class="p-2 text-gray-400 hover:text-gray-600 transition-colors" 
-                               title="View">
-                                <i data-lucide="eye" class="h-5 w-5"></i>
-                            </a>
                             <a href="{{ route('admin.products.edit', $product) }}" 
                                class="p-2 text-gray-400 hover:text-gray-600 transition-colors" 
                                title="Edit">

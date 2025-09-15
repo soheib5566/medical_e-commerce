@@ -16,10 +16,10 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'Soheib',
-            'email' => 'soheib5544@gmail.com',
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('55566613479$Ss'), // Hash the password
+            'password' => Hash::make('555666'),
             'remember_token' => Str::random(10),
             'created_at' => now(),
             'updated_at' => now(),

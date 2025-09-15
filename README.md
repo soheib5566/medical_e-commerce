@@ -29,7 +29,7 @@ It includes **customer pages** (browse, cart, checkout) and an **admin panel** (
 2. **Install dependencies**
 ```bash
 composer install
-npm install && npm run build
+npm install && npm run dev
 ```
 3. **Setup environment & DataBase**
 ```bash

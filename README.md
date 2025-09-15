@@ -77,3 +77,59 @@ Controllers
 
 ProductController, OrderController, CartController
 
+## 🌐 Website (Customer) Routes
+
+| Method | URL                     | Description                                |
+|--------|-------------------------|--------------------------------------------|
+| GET    | /                       | Show all products (homepage)               |
+| POST   | /products/{product}/cart| Add a product to the cart                  |
+| GET    | /cart                   | View cart items                            |
+| GET    | /cart/count             | Get cart item count (AJAX)                 |
+| PUT    | /cart/{product}         | Update quantity of a product in the cart   |
+| DELETE | /cart/{product}         | Remove a product from the cart             |
+| GET    | /checkout               | Show checkout form                         |
+| POST   | /checkout               | Place order                                |
+| GET    | /orders/{order}         | Show order confirmation/details            |
+
+---
+## 🔑 Admin Auth Routes
+
+| Method | URL      | Description            |
+|--------|----------|------------------------|
+| GET    | /login   | Show login form        |
+| POST   | /login   | Process login request  |
+| POST   | /logout  | Logout the user        |
+
+---
+
+## 🛠️ Admin Routes
+
+(All routes are prefixed with `/admin` and protected by `auth` middleware)
+
+| Method | URL                     | Description                                |
+|--------|-------------------------|--------------------------------------------|
+| GET    | /admin/dashboard        | Admin dashboard (stats overview)           |
+| GET    | /admin/products         | List products                              |
+| GET    | /admin/products/create  | Show create product form                   |
+| POST   | /admin/products         | Store a new product                        |
+| GET    | /admin/products/{id}/edit | Edit a product                           |
+| PUT    | /admin/products/{id}    | Update a product                           |
+| DELETE | /admin/products/{id}    | Delete a product                           |
+| GET    | /admin/orders           | List orders                                |
+| GET    | /admin/orders/{id}      | Show a specific order                      |
+| PUT    | /admin/orders/{id}      | Update order status                        |
+| GET    | /admin/product-logs     | View product logs (changes history)        |
+---
+## 🛠️ Tech Stack
+
+-Laravel 11 (Backend)
+
+-MySQL / PostgreSQL (Database)
+
+-TailwindCSS (Styling)
+
+-Alpine.js (Frontend interactivity)
+
+-Vite (Asset bundling)
+
+-Render (Deployment)

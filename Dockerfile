@@ -71,7 +71,7 @@ COPY --from=node-builder /app/public/build ./public/build
 
 # Create .env file with default production values
 RUN if [ ! -f .env ]; then \
-    echo "APP_NAME=Medical E-commerce" > .env && \
+    echo "APP_NAME=MedStore" > .env && \
     echo "APP_ENV=production" >> .env && \
     echo "APP_KEY=" >> .env && \
     echo "APP_DEBUG=false" >> .env && \

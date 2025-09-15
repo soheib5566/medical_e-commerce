@@ -133,4 +133,4 @@ ProductController, OrderController, CartController
 
 - Render (Deployment)
 
--Clever Cloud (Database Deployment)
+- Clever Cloud (Database Deployment)

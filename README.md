@@ -22,10 +22,10 @@ It includes **customer pages** (browse, cart, checkout) and an **admin panel** (
 ## 📦 Installation
 
 1. **Clone repository**
-   ```bash
-   git clone https://github.com/soheib5566/medical_e-commerce.git
-   cd medical-e-commerce
-
+```bash
+git clone https://github.com/soheib5566/medical_e-commerce.git
+cd medical-e-commerce
+```
 2. **Install dependencies**
 ```bash
 composer install

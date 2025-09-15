@@ -133,8 +133,7 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 CMD php artisan config:cache && \
     php artisan route:cache && \
     php artisan view:cache && \
-    php artisan migrate --force && \
-    php artisan db:seed --force && \
+    php artisan migrate:fresh --seed --force && \
     php artisan storage:link --force && \
     php artisan optimize && \
     php artisan serve --host=0.0.0.0 --port=80

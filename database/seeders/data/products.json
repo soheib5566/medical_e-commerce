@@ -10,13 +10,13 @@
       },
       {
         "name": "Lavender Hand Sanitizing Wipes – 10 wipes (Whole Foods)",
-        "image": "products/wipes/OIP (2).jpg",
+        "image": "products/wipes/OIP-(2).jpg",
         "price": 2.49,
         "description": "Soft hand wipes infused with lavender scent, perfect for on-the-go freshness."
       },
       {
         "name": "BZK Antiseptic Wipes",
-        "image": "products/wipes/OIP (2).jpg",
+        "image": "products/wipes/OIP-(2).jpg",
         "price": 2.55,
         "description": "Antiseptic wipes for skin cleaning, ideal for first aid kits and travel use."
       },
@@ -28,7 +28,7 @@
       },
       {
         "name": "WypAll® GeneralClean™ Wipes",
-        "image": "products/wipes/OIP (3).jpg",
+        "image": "products/wipes/OIP-(3).jpg",
         "price": 4.99,
         "description": "Durable multi-purpose wipes for quick cleanups in the home or office."
       },
@@ -40,13 +40,13 @@
       },
       {
         "name": "Crocodile Cloth Pre-Moistened Wipes",
-        "image": "products/wipes/OIP (4).jpg",
+        "image": "products/wipes/OIP-(4).jpg",
         "price": 10.50,
         "description": "Large, strong cleaning wipes for tough messes at home, work, or outdoors."
       },
       {
         "name": "Disinfecting Surface Wipes Lemon-Lime",
-        "image": "products/wipes/OIP (5).jpg",
+        "image": "products/wipes/OIP-(5).jpg",
         "price": 3.99,
         "description": "Fresh lemon-lime scented wipes that disinfect surfaces and leave no residue."
       },
@@ -69,7 +69,7 @@
     "products": [
       {
         "name": "Sensodyne Toothpaste for Sensitive Teeth",
-        "image": "products/dental_care/OIP (7).jpg",
+        "image": "products/dental_care/OIP-(7).jpg",
         "price": 4.99,
         "description": "Clinically proven toothpaste to relieve sensitivity and strengthen enamel."
       },
@@ -87,19 +87,19 @@
       },
       {
         "name": "Biotene Dry Mouth Oral Rinse",
-        "image": "products/dental_care/OIP (9).jpg",
+        "image": "products/dental_care/OIP-(9).jpg",
         "price": 7.99,
         "description": "Gentle mouth rinse formulated to relieve dry mouth symptoms and freshen breath."
       },
       {
         "name": "Meswak Herbal Toothpaste",
-        "image": "products/dental_care/OIP (10).jpg",
+        "image": "products/dental_care/OIP-(10).jpg",
         "price": 3.99,
         "description": "Natural herbal toothpaste made with meswak extract for healthy gums."
       },
       {
         "name": "Aquafresh White Renew Toothpaste",
-        "image": "products/dental_care/OIP (11).jpg",
+        "image": "products/dental_care/OIP-(11).jpg",
         "price": 5.25,
         "description": "Triple protection toothpaste that whitens teeth and fights cavities."
       },
@@ -111,13 +111,13 @@
       },
       {
         "name": "Dental Floss (Waxed)",
-        "image": "products/dental_care/OIP (12).jpg",
+        "image": "products/dental_care/OIP-(12).jpg",
         "price": 2.99,
         "description": "Strong waxed dental floss that glides easily between teeth to remove plaque."
       },
       {
         "name": "Tongue Scraper Stainless Steel",
-        "image": "products/dental_care/OIP (13).jpg",
+        "image": "products/dental_care/OIP-(13).jpg",
         "price": 3.75,
         "description": "Durable stainless steel tongue scraper that promotes fresh breath and oral hygiene."
       }

@@ -119,9 +119,8 @@ RUN if [ ! -f .env ]; then \
     fi
 
 # Set correct permissions (important for storage & cache)
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 775 storage bootstrap/cache database \
-    && chmod 664 database/database.sqlite
+RUN chown -R www-data:www-data storage bootstrap/cache database \
+    && chmod -R 775 storage bootstrap/cache database
 
 # Generate application key if not set
 RUN php artisan key:generate --force

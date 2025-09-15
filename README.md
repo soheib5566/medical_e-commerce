@@ -57,7 +57,7 @@ php artisan storage:link
 ```
 7. **Run local server**
 ```bash
-Run local server
+php artisan serve
 ```
 ## 👨‍💻 Admin Test Credentials
 Email: admin@gmail.com

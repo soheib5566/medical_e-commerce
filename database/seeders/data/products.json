@@ -22,7 +22,7 @@
       },
       {
         "name": "Kimtech™ Disinfecting Wipes",
-        "image": "products/wipes/kim.jpg",
+        "image": "products/wipes/kim.jpeg",
         "price": 5.99,
         "description": "Pre-moistened disinfecting wipes for surfaces, removes 99.9% of germs."
       },
@@ -105,7 +105,7 @@
       },
       {
         "name": "Electric Toothbrush (Basic Model)",
-        "image": "products/dental_care/Elctric.jpg",
+        "image": "products/dental_care/Elctric.jpeg",
         "price": 29.99,
         "description": "Rechargeable electric toothbrush with soft bristles for daily dental care."
       },

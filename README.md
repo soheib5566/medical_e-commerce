@@ -133,3 +133,5 @@ ProductController, OrderController, CartController
 - Vite (Asset bundling)
 
 - Render (Deployment)
+
+-Clever Cloud (Database Deployment)

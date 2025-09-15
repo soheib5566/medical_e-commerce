@@ -25,16 +25,8 @@ It includes **customer pages** (browse, cart, checkout) and an **admin panel** (
    ```bash
    git clone https://github.com/soheib5566/medical_e-commerce.git
    cd medical-e-commerce
+
+2. **Install dependencies**
+```bash
 composer install
 npm install && npm run build
-cp .env.example .env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=medical_e_commerce
-DB_USERNAME=root
-DB_PASSWORD=your_password
-php artisan key:generate
-php artisan migrate:fresh --seed
-php artisan storage:link
-php artisan serve

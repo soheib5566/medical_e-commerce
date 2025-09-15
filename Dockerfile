@@ -118,9 +118,6 @@ RUN if [ ! -f .env ]; then \
     echo "VITE_PUSHER_APP_CLUSTER=\"\${PUSHER_APP_CLUSTER}\"" >> .env; \
     fi
 
-# Create database directory and file for SQLite
-RUN mkdir -p database && touch database/database.sqlite
-
 # Set correct permissions (important for storage & cache)
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 storage bootstrap/cache database \

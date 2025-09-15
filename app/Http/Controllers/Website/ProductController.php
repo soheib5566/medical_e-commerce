@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\website;
+namespace App\Http\Controllers\Website;
 
 use App\Filters\Website\ProductFilter;
 use App\Http\Controllers\Controller;

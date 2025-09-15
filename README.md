@@ -122,14 +122,14 @@ ProductController, OrderController, CartController
 ---
 ## 🛠️ Tech Stack
 
--Laravel 11 (Backend)
+- Laravel 11 (Backend)
 
--MySQL / PostgreSQL (Database)
+- MySQL / PostgreSQL (Database)
 
--TailwindCSS (Styling)
+- TailwindCSS (Styling)
 
--Alpine.js (Frontend interactivity)
+- Alpine.js (Frontend interactivity)
 
--Vite (Asset bundling)
+- Vite (Asset bundling)
 
--Render (Deployment)
+- Render (Deployment)

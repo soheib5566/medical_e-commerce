@@ -116,7 +116,6 @@ ProductController, OrderController, CartController
 | PUT    | /admin/products/{id}    | Update a product                           |
 | DELETE | /admin/products/{id}    | Delete a product                           |
 | GET    | /admin/orders           | List orders                                |
-| GET    | /admin/orders/{id}      | Show a specific order                      |
 | PUT    | /admin/orders/{id}      | Update order status                        |
 | GET    | /admin/product-logs     | View product logs (changes history)        |
 ---
